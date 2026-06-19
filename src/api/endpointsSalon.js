@@ -1,7 +1,7 @@
 import axiosClient from "./axiosClient";
 
 export const allsalonesRequest = () =>
-  axiosClient.get(`/api/salones`);
+  axiosClient.get(`/api/salones/`);
 
 export const getLibrosRequest = () =>
   axiosClient.get(`/api/salones/libros`);
