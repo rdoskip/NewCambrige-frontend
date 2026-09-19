@@ -1,54 +1,59 @@
 import axios from "axios";
+import { emitLoginBlocked, emitSessionExpired } from "./sessionEvents";
 
+const TOKEN_KEY = "access_token";
+const REFRESH_HEADER = "x-refreshed-token";
 
 const axiosClient = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
-    headers: { "Content-Type": "application/json" },
+  baseURL: import.meta.env.VITE_API_URL,
+  headers: { "Content-Type": "application/json" },
 });
 
-// Request interceptor
+// =============================
+// REQUEST: adjuntar token
+// =============================
 axiosClient.interceptors.request.use((config) => {
-    const token = localStorage.getItem("access_token");
-    if (token) config.headers.Authorization = `Bearer ${token}`;
-    return config;
+  const token = localStorage.getItem(TOKEN_KEY);
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
 });
 
-// Response interceptor
+// =============================
+// RESPONSE
+// =============================
 axiosClient.interceptors.response.use(
-    (response) => response,
-    (error) => {
-        const status = error.response?.status;
-        const url = error.config?.url || "";
-        const detail = error.response?.data?.detail || "";
-
-        // =========================
-        // ENDPOINT DE LOGIN (/token)
-        // =========================
-        if (url.includes("/api/auth/token")) {
-            if (status === 429) {
-                const message = "Hiciste demaciados intentos de sesión. Intenta nuevamente en 1 minuto.";
-                // Guardar en sessionStorage (no hay redirección)
-                sessionStorage.setItem("popupMessage", message);
-                sessionStorage.setItem("popupType", "login-blocked");
-                // Evento para mostrarlo sin recargar
-                window.dispatchEvent(new CustomEvent("login-blocked", { detail: message }));
-            }
-            return Promise.reject(error);
-        }
-
-        // =========================
-        // RESTO DE ENDPOINTS (protegidos) – sesión expirada
-        // =========================
-        // Response interceptor - dentro del manejo de 401
-        if (status === 401) {
-            localStorage.removeItem("access_token");
-            sessionStorage.setItem("showLogoutPopup", "true"); 
-            window.location.replace("/"); 
-            return Promise.reject(error);
-        }
-
-        return Promise.reject(error);
+  (response) => {
+    // Renovación silenciosa: el backend manda un token nuevo cuando toca
+    const refreshed = response.headers[REFRESH_HEADER];
+    if (refreshed) {
+      localStorage.setItem(TOKEN_KEY, refreshed);
     }
+    return response;
+  },
+  (error) => {
+    const status = error.response?.status;
+    const url = error.config?.url || "";
+
+    // -------- LOGIN --------
+    if (url.includes("/api/auth/token")) {
+      if (status === 429) {
+        emitLoginBlocked(
+          "Hiciste demasiados intentos de sesión. Intenta nuevamente en 1 minuto."
+        );
+      }
+      return Promise.reject(error);
+    }
+
+    // -------- RESTO (protegidos) --------
+    if (status === 401) {
+      localStorage.removeItem(TOKEN_KEY);
+      emitSessionExpired(
+        error.response?.data?.detail || "Su sesión ha finalizado."
+      );
+    }
+
+    return Promise.reject(error);
+  }
 );
 
 export default axiosClient;

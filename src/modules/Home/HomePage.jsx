@@ -18,7 +18,7 @@ import ModuleLayout from "../../components/layout/ModuleLayout";
 import CardsGrid from "../../components/layout/CardsGrid";
 
 
-import { useAuth } from "../../api/useAuth";
+import { useAuth } from "../../api/AuthContext";
 import { useNavigate } from 'react-router-dom';
 
 

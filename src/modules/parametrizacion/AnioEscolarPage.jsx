@@ -10,7 +10,7 @@ import ActionButtons from "../../components/shared/ActionButtons";
 import ParamModal from "../../components/shared/ParamModal";
 import Alert from "../../components/shared/Alert";
 
-import { useAuth } from "../../api/useAuth";
+import { useAuth } from "../../api/AuthContext";
 import { obtenerAniosRequest, crearAnioRequest, actualizarAnioRequest } from "../../api/endpointsParametrizacion";
 
 import { Icon } from '@mdi/react';
@@ -87,7 +87,6 @@ const YearPicker = ({ selectedYear, onYearSelect, placeholder = "Seleccionar añ
 
 const AnioEscolarPage = () => {
   const { user, roles, loadingRoles, logout } = useAuth();
-  
   const [anios, setAnios] = useState([]);
   const [anioSeleccionado, setAnioSeleccionado] = useState(null);
   

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
-import { useAuth } from "../../api/useAuth";
+import { useAuth } from "../../api/AuthContext";
 import { allrolesuserRequest } from '../../api/endpoints';
 import { Home } from "lucide-react";
 import EstudianteLogo from '../../assets/Rectoria/estudiante.svg';

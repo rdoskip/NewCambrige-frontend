@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from "../../api/useAuth";
+import { useAuth } from "../../api/AuthContext";
 
 import Icon from '@mdi/react';
 import { mdiHome, mdiAccountMusic, mdiPiano } from '@mdi/js';

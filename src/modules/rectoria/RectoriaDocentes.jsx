@@ -5,7 +5,7 @@ import {descargarPdfDocentesBatchRequest,docentesRectoriaRequest,firmarDocenteRe
 import PazYSalvoModal from "./PazYSalvoModal";
 import {allsalonesbyperiodoRequest,} from '../../api/endpointsTesoreria';
 import { Home } from "lucide-react";
-import { useAuth } from "../../api/useAuth";
+import { useAuth } from "../../api/AuthContext";
 import Header from "../../components/layout/header";
 import ModuleLayout from "../../components/layout/ModuleLayout";
 import Sidebar from "../../components/layout/Sidebar";

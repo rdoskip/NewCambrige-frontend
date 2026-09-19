@@ -10,7 +10,7 @@ import CardsGrid from "../../components/layout/CardsGrid";
 
 import "./Importacion.css";
 
-import { useAuth } from "../../api/useAuth";
+import { useAuth } from "../../api/AuthContext";
 
 // Eliminamos lucide-react y prepararemos las imágenes que enviaste
 // Por favor, guarda las dos imágenes en la carpeta src/assets/importacion/ con estos nombres:

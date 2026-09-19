@@ -10,7 +10,7 @@ import ActionButtons from "../../components/shared/ActionButtons";
 import ParamModal from "../../components/shared/ParamModal"; 
 import Alert from "../../components/shared/Alert";
 
-import { useAuth } from "../../api/useAuth";
+import { useAuth } from "../../api/AuthContext";
 import { 
   obtenerObjetosRequest, 
   crearObjetoRequest, 

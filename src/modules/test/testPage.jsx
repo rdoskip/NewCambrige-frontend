@@ -11,7 +11,7 @@ import DataTable from "../../components/shared/DataTable";
 import ActionButtons from "../../components/shared/ActionButtons";
 import Modal from "../../components/shared/Modal";
 import Alert from "../../components/shared/Alert";
-import { useAuth } from "../../api/useAuth";
+import { useAuth } from "../../api/AuthContext";
 
 const libros = [
   { id_libro: 1, nombre: "Matemáticas 6", autor: "Santillana", disponible: true },

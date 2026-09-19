@@ -6,7 +6,7 @@ import axiosClient from "../../api/axiosClient";
 import ModuleLayout from "../../components/layout/ModuleLayout";
 import Sidebar from "../../components/layout/Sidebar";
 import Header from "../../components/layout/header";
-import { useAuth } from "../../api/useAuth";
+import { useAuth } from "../../api/AuthContext";
 
 import {
   sincronizarEstudiantesRequest,

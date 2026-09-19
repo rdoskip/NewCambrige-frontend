@@ -6,7 +6,7 @@ import {
   createObjetoRequest,
   updateObjetoRequest
 } from "../../api/uniformesService";
-import { useAuth } from "../../api/useAuth";
+import { useAuth } from "../../api/AuthContext";
 
 import Header from "../../components/layout/header";
 import ModuleLayout from "../../components/layout/ModuleLayout";

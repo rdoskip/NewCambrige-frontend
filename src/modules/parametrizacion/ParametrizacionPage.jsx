@@ -9,7 +9,7 @@ import "./ParametrizacionPage.css";
 import Header from "../../components/layout/header";
 import Sidebar from "../../components/layout/Sidebar";
 import ModuleLayout from "../../components/layout/ModuleLayout";
-import { useAuth } from "../../api/useAuth";
+import { useAuth } from "../../api/AuthContext";
 
 // ==========================================
 // IMPORTACIONES DE ICONOS

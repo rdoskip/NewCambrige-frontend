@@ -1,7 +1,7 @@
 // Sidebar.js
 import { useNavigate } from "react-router-dom";
 import { LogOut, UserCircle2 } from "lucide-react";
-import { useAuth } from "../../api/useAuth";
+import { useAuth } from "../../api/AuthContext";
 import "./Sidebar.css";
 
 
@@ -35,10 +35,10 @@ export default function Sidebar({
     navigate(item.path);
   };
 
-  const handleLogout = (e) => {
+  const handleLogout = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    logout();
+    await logout();
   };
 
   return (

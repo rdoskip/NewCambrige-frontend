@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { useAuth } from "../../api/useAuth";
-import { Home } from "lucide-react";
+import { useAuth } from "../../api/AuthContext";import { Home } from "lucide-react";
 import {
   getPruebasRequest,
   updateEstadoPruebaRequest,

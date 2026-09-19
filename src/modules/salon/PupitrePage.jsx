@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useAuth } from "../../api/useAuth";
+import { useAuth } from "../../api/AuthContext";
 import { createPupitreRequest} from "../../api/endpointsSalon";
 import {
   getPupitresRequest,

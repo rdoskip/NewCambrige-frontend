@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { allrolesuserRequest, allaniosacademicosRequest } from '../../api/endpoints';
 import {estudiantesRectoriaRequest,estudianteFirmasRequest,firmarRectoriaEstudianteRequest,descargarPdfEstudianteRequest,descargarPdfEstudiantesBatchRequest,imagenFirmaRequest,selloRequest} from "../../api/endpointsRectoria";
 import { Home } from "lucide-react";
-import { useAuth } from "../../api/useAuth";
+import { useAuth } from "../../api/AuthContext";
 import Header from "../../components/layout/header";
 import ModuleLayout from "../../components/layout/ModuleLayout";
 import Sidebar from "../../components/layout/Sidebar";

@@ -21,7 +21,7 @@ import {
   getObjetosDisponiblesRequest,
   registrarPrestamoRequest
 } from "../../api/uniformesService";
-import { useAuth } from "../../api/useAuth";
+import { useAuth } from "../../api/AuthContext";
 import { allaniosacademicosRequest } from "../../api/endpoints";
 
 
